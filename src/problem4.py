@@ -3,8 +3,8 @@ Exam 1, problem 4.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Alex Smith.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -80,10 +80,23 @@ def problem4(point1, point2, n, window):
       :type window:  rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # IMPORTANT: For PARTIAL CREDIT, ignore the colors.
     # -------------------------------------------------------------------------
+    deltax = (point2.x - point1.x) / (2*n + 1)
+    deltay = (point2.y - point1.y) / (2*n + 1)
+    point1.attach_to(window)
+    point2.attach_to(window)
+    window.render()
+    for k in range(2*n + 1):
+        point = rg.Point(point1.x + deltax * k, point1.y + deltay * k)
+        if k <= n:
+            point.fill_color = point1.fill_color
+        if k > n:
+            point.fill_color = point2.fill_color
+        point.attach_to(window)
+        window.render()
 
 
 # -----------------------------------------------------------------------------
